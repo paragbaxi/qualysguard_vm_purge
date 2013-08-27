@@ -10,5 +10,8 @@ assets = qgc.request('asset_search.php', {'last_scan': 'not_within:164', 'target
 ips = ''
 for host in root.HOST_LIST.HOST:
     for ip in host.IP:
-        ips += ip + ','
+        ips += ip.text + ','
 ips = ips[:-1]
+# Purge assets older than number_of_days.
+purge = qgc.request('/api/2.0/fo/asset/host/', {'action': 'purge', 'ips': ips})
+print purge
