@@ -15,6 +15,5 @@ for host in root.HOST_LIST.HOST:
 ips = ips[:-1]
 # Purge assets older than number_of_days.
 print ips
-exit()
 purge = qgc.request('/api/2.0/fo/asset/host/', {'action': 'purge', 'ips': ips})
 print purge
